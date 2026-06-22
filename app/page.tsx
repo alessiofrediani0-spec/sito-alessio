@@ -459,107 +459,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FORM */}
+      {/* CTA FINALE */}
       <section id="form" className="scroll-mt-8 border-t border-white/5 bg-black/20">
-        <div className="mx-auto max-w-xl px-6 py-20 md:py-28">
-          <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
-            Lascia i tuoi dati,{" "}
-            <span className="italic text-amber-500">ti contatto entro 24 ore</span>
+        <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-20 text-center md:py-28">
+          <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+            Pronto a scoprire come funziona?
           </h2>
-          <p className="mt-4 text-center text-slate-400">
-            Nessun impegno. Solo una chiacchierata per capire se fa per te.
+          <p className="mt-4 text-slate-400">
+            Guarda il video di presentazione e scopri se fa per te.
           </p>
-
-          <form
-            action="https://formsubmit.co/alessio515globalenergy@gmail.com"
-            method="POST"
-            className="mt-10 space-y-5"
+          <a
+            href="/grazie"
+            className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-10 py-4 text-base font-semibold text-neutral-950 shadow-lg shadow-amber-500/20 transition-colors hover:bg-amber-400"
           >
-            <input
-              type="hidden"
-              name="_subject"
-              value="Nuovo lead dalla landing page"
-            />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input
-              type="hidden"
-              name="_next"
-              value="https://sito-alessio-bice.vercel.app/grazie"
-            />
-            <input
-              type="text"
-              name="_honey"
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden
-            />
-
-            <div>
-              <label
-                htmlFor="nome"
-                className="mb-2 block text-sm font-medium text-slate-300"
-              >
-                Nome completo
-              </label>
-              <input
-                id="nome"
-                type="text"
-                name="Nome"
-                required
-                autoComplete="name"
-                placeholder="Mario Rossi"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="telefono"
-                className="mb-2 block text-sm font-medium text-slate-300"
-              >
-                Numero di telefono
-              </label>
-              <input
-                id="telefono"
-                type="tel"
-                name="Telefono"
-                required
-                autoComplete="tel"
-                placeholder="333 1234567"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="messaggio"
-                className="mb-2 block text-sm font-medium text-slate-300"
-              >
-                Messaggio{" "}
-                <span className="font-normal text-slate-500">(opzionale)</span>
-              </label>
-              <textarea
-                id="messaggio"
-                name="Messaggio"
-                rows={4}
-                placeholder="Raccontami brevemente cosa ti interessa…"
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-xl bg-amber-500 px-6 py-4 text-base font-semibold text-neutral-950 shadow-lg shadow-amber-500/20 transition-colors hover:bg-amber-400"
-            >
-              Invia richiesta
-            </button>
-
-            <p className="text-center text-xs text-slate-500">
-              I tuoi dati sono al sicuro e non verranno condivisi con terzi.
-            </p>
-          </form>
+            Inizia la selezione <span aria-hidden>→</span>
+          </a>
         </div>
       </section>
 

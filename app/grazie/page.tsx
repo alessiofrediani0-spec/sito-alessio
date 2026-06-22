@@ -38,9 +38,17 @@ const questions: Question[] = [
 ];
 
 const WHATSAPP_URL =
-  "https://wa.me/393517093649?text=Ciao%20Alessio%2C%20ho%20guardato%20il%20video%20e%20voglio%20saperne%20di%20pi%C3%B9";
+  "https://wa.me/393517093649?text=Ciao%20Alessio%2C%20ho%20guardato%20il%20video%20e%20completato%20il%20quiz.%20Voglio%20saperne%20di%20più!";
 
-function Quiz({ videoCompleted }: { videoCompleted: boolean }) {
+type Lead = { nome: string; telefono: string; email: string };
+
+function Quiz({
+  videoCompleted,
+  lead,
+}: {
+  videoCompleted: boolean;
+  lead: Lead;
+}) {
   const [step, setStep] = useState<number | "final">(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -50,11 +58,14 @@ function Quiz({ videoCompleted }: { videoCompleted: boolean }) {
 
   async function submitLead(finalAnswers: string[]) {
     try {
-      await fetch("https://formsubmit.co/alessio515globalenergy@gmail.com", {
+      await fetch("https://formsubmit.co/ajax/alessio515globalenergy@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          _subject: "Quiz completato - nuovo lead qualificato",
+          _subject: "Lead qualificato completo",
+          nome: lead.nome,
+          telefono: lead.telefono,
+          email: lead.email,
           video_completato: videoCompleted ? "Sì" : "No",
           domanda_1: finalAnswers[0],
           domanda_2: finalAnswers[1],
@@ -171,6 +182,8 @@ export default function Grazie() {
   const maxReachedRef = useRef(0);
   const draggingRef = useRef(false);
 
+  const [lead, setLead] = useState<Lead>({ nome: "", telefono: "", email: "" });
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -195,7 +208,12 @@ export default function Grazie() {
     return () => {
       video.removeEventListener("seeking", handleSeeking);
     };
-  }, []);
+  }, [leadSubmitted]);
+
+  function handleLeadSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLeadSubmitted(true);
+  }
 
   function togglePlay() {
     const video = videoRef.current;
@@ -275,7 +293,90 @@ export default function Grazie() {
             cosa succede dopo.
           </p>
 
-          {/* Video con controlli custom */}
+          {!leadSubmitted ? (
+            /* Raccolta dati prima del video */
+            <form
+              onSubmit={handleLeadSubmit}
+              className="mx-auto mt-12 w-full max-w-md rounded-2xl border border-indigo-400/30 bg-[#0d1117] p-8 text-left"
+            >
+              <h2 className="text-center font-serif text-2xl font-bold tracking-tight text-white">
+                Prima di guardare il video, dimmi chi sei
+              </h2>
+
+              <div className="mt-8 space-y-5">
+                <div>
+                  <label
+                    htmlFor="nome"
+                    className="mb-2 block text-sm font-medium text-slate-300"
+                  >
+                    Nome completo
+                  </label>
+                  <input
+                    id="nome"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    placeholder="Mario Rossi"
+                    value={lead.nome}
+                    onChange={(e) =>
+                      setLead((prev) => ({ ...prev, nome: e.target.value }))
+                    }
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="telefono"
+                    className="mb-2 block text-sm font-medium text-slate-300"
+                  >
+                    Numero di telefono
+                  </label>
+                  <input
+                    id="telefono"
+                    type="tel"
+                    required
+                    autoComplete="tel"
+                    placeholder="333 1234567"
+                    value={lead.telefono}
+                    onChange={(e) =>
+                      setLead((prev) => ({ ...prev, telefono: e.target.value }))
+                    }
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium text-slate-300"
+                  >
+                    Email{" "}
+                    <span className="font-normal text-slate-500">(opzionale)</span>
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="mario@email.it"
+                    value={lead.email}
+                    onChange={(e) =>
+                      setLead((prev) => ({ ...prev, email: e.target.value }))
+                    }
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-4 text-base font-semibold text-neutral-950 shadow-lg shadow-amber-500/20 transition-colors hover:bg-amber-400"
+                >
+                  Guarda il video <span aria-hidden>→</span>
+                </button>
+              </div>
+            </form>
+          ) : (
+          /* Video con controlli custom */
           <div className="mx-auto mt-12 w-full max-w-3xl">
             <video
               ref={videoRef}
@@ -336,6 +437,7 @@ export default function Grazie() {
               </span>
             </div>
           </div>
+          )}
 
           {/* Card prossimo passo */}
           <div className="mt-12 w-full max-w-2xl rounded-2xl border border-amber-500/40 bg-black/30 p-8 text-left backdrop-blur">
@@ -364,7 +466,7 @@ export default function Grazie() {
       {quizOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-6 backdrop-blur">
           <div className="w-full max-w-lg rounded-2xl border border-indigo-400/40 bg-[#0d1117] p-8 shadow-2xl">
-            <Quiz videoCompleted={videoCompleted} />
+            <Quiz videoCompleted={videoCompleted} lead={lead} />
           </div>
         </div>
       )}
