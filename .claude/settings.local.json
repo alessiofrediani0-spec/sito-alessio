@@ -12,7 +12,8 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"fix foto\"; git push })",
       "PowerShell(try { Invoke-WebRequest -UseBasicParsing http://localhost:3000/ -TimeoutSec 30 | Out-Null; \"HOME OK\" } catch { \"HOME: $\\($_.Exception.Message\\)\" }; try { Invoke-WebRequest -UseBasicParsing http://localhost:3000/grazie -TimeoutSec 30 | Out-Null; \"GRAZIE OK\" } catch { \"GRAZIE: $\\($_.Exception.Message\\)\" })",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"avatar reali social proof\"; git push })",
-      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"aggiorna sezione chi sono completa\"; git push })"
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"aggiorna sezione chi sono completa\"; git push })",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"sostituisce come funziona con risultati metodo\"; git push })"
     ]
   }
 }

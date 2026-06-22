@@ -100,34 +100,22 @@ const avatars = [
   { src: "/team/rosario.jpg", alt: "Rosario" },
 ];
 
-const steps = [
+const methodPoints = [
   {
-    n: "1",
-    title: "Attivi le tue utenze",
-    body: "Sposti luce e gas con Italia Gas e Luce. Una spesa che hai già, a costo zero.",
+    icon: "🎯",
+    title: "Metodo replicabile",
+    body: "Un percorso passo-passo, non improvvisazione.",
   },
   {
-    n: "2",
-    title: "Costruisci una piccola rete",
-    body: "Coinvolgi persone che fanno esattamente lo stesso: spostare una spesa che hanno già.",
+    icon: "📈",
+    title: "Rendita progressiva",
+    body: "Costruisci entrate che crescono nel tempo.",
   },
   {
-    n: "3",
-    title: "Percepisci ricorrenti mensili",
-    body: "Ricevi commissioni ricorrenti automatiche finché le utenze restano attive.",
+    icon: "🤝",
+    title: "Mentoring 1:1",
+    body: "Ti seguo personalmente nei primi mesi.",
   },
-];
-
-const forYou = [
-  "Per chi vuole un'entrata extra concreta",
-  "Per chi ha almeno 3-4 ore a settimana",
-  "Per chi vuole costruire qualcosa di replicabile",
-];
-
-const notForYou = [
-  "Non è per chi cerca soldi facili",
-  "Non è per chi non vuole coinvolgere nessuno",
-  "Non è per chi vuole risultati senza impegno",
 ];
 
 const teamResults = [
@@ -388,73 +376,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COME FUNZIONA */}
+      {/* RISULTATI REALI DEL METODO */}
       <section className="border-t border-white/5">
         <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
-            Come <span className="italic text-amber-500">funziona</span>
+            Risultati reali del metodo
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
-            Tre passi semplici. Nessuna vendita, nessun magazzino.
+            Quello che ottieni con costanza e impegno.
           </p>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {steps.map((step) => (
+            {methodPoints.map((point) => (
               <div
-                key={step.n}
-                className="rounded-2xl border border-indigo-400/15 bg-white/[0.03] p-8 transition-colors hover:border-amber-500/30"
+                key={point.title}
+                className="rounded-2xl border border-indigo-400/15 bg-[#0d1117] p-8 transition-colors hover:border-amber-500/30"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 font-serif text-xl font-bold text-neutral-950">
-                  {step.n}
+                <div className="text-3xl" aria-hidden>
+                  {point.icon}
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-white">
-                  {step.title}
+                  {point.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-300">
-                  {step.body}
+                  {point.body}
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PER CHI È / NON È */}
-      <section className="border-t border-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-          <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
-            È adatto <span className="italic text-amber-500">a te?</span>
-          </h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-8">
-              <h3 className="text-lg font-semibold text-emerald-400">
-                Fa per te
-              </h3>
-              <ul className="mt-6 space-y-4">
-                {forYou.map((item) => (
-                  <li key={item} className="flex gap-3 text-slate-200">
-                    <span aria-hidden className="mt-0.5 font-bold text-emerald-400">
-                      ✓
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl border border-red-500/30 bg-red-500/5 p-8">
-              <h3 className="text-lg font-semibold text-red-400">
-                Non fa per te
-              </h3>
-              <ul className="mt-6 space-y-4">
-                {notForYou.map((item) => (
-                  <li key={item} className="flex gap-3 text-slate-200">
-                    <span aria-hidden className="mt-0.5 font-bold text-red-400">
-                      ✕
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </section>
