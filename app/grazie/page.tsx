@@ -1,6 +1,19 @@
 "use client";
 
+import { Inter, DM_Serif_Display } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-dm-serif",
+});
 
 /* ---------------- Quiz ---------------- */
 
@@ -267,7 +280,7 @@ export default function Grazie() {
   const maxPct = duration ? (maxReached / duration) * 100 : 0;
 
   return (
-    <div className="w-full bg-gradient-to-b from-[#0a0f1e] via-[#11132e] to-[#1a1040] font-sans text-slate-100">
+    <div className={`${inter.variable} ${dmSerif.variable} w-full bg-gradient-to-b from-[#0a0f1e] via-[#11132e] to-[#1a1040] font-sans text-slate-100`}>
       <section className="relative overflow-hidden">
         <div
           aria-hidden
