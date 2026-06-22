@@ -6,7 +6,8 @@
       "PowerShell(New-Item *)",
       "PowerShell(Get-Command *)",
       "PowerShell(git *)",
-      "PowerShell(git push *)"
+      "PowerShell(git push *)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { \"TSC OK\" })"
     ]
   }
 }
