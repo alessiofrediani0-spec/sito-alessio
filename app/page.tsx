@@ -146,12 +146,12 @@ const teamResults = [
 
 export default function Home() {
   return (
-    <div className="w-full bg-gradient-to-b from-[#0a0f1e] via-[#11132e] to-[#1a1040] font-sans text-slate-100">
+    <div className="w-full bg-gradient-to-b from-[#020b18] via-[#051525] to-[#0a1f35] font-sans text-slate-100">
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div
           aria-hidden
-          className="absolute left-1/2 top-0 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-indigo-600/20 blur-[130px]"
+          className="absolute left-1/2 top-0 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-blue-600/20 blur-[130px]"
         />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 py-12 text-center md:py-16">
@@ -225,10 +225,10 @@ export default function Home() {
                     alt={a.alt}
                     width={40}
                     height={40}
-                    className="-ml-3 h-10 w-10 rounded-full border-2 border-indigo-900 object-cover object-top first:ml-0"
+                    className="-ml-3 h-10 w-10 rounded-full border-2 border-blue-900 object-cover object-top first:ml-0"
                   />
                 ))}
-                <div className="-ml-3 flex h-10 items-center justify-center rounded-full border-2 border-indigo-900 bg-slate-700 px-3 text-sm font-bold text-white">
+                <div className="-ml-3 flex h-10 items-center justify-center rounded-full border-2 border-blue-900 bg-slate-700 px-3 text-sm font-bold text-white">
                   +970
                 </div>
               </div>
@@ -256,8 +256,8 @@ export default function Home() {
       {/* VIDEO BLOCCATO */}
       <section className="border-t border-white/5">
         <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-          <div className="flex flex-col items-center gap-5 rounded-2xl border border-indigo-400/30 bg-[#0d1117] px-8 py-12 text-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-indigo-400/40 bg-white/5 text-2xl text-amber-400">
+          <div className="flex flex-col items-center gap-5 rounded-2xl border border-blue-900 bg-[#020d1a] px-8 py-12 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-blue-900 bg-white/5 text-2xl text-amber-400">
               ▶
             </div>
             <h2 className="font-serif text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -328,7 +328,7 @@ export default function Home() {
       <section className="border-t border-white/5">
         <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <div className="flex flex-col items-center text-center">
-            <span className="inline-flex items-center rounded-full border border-indigo-400/20 bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-slate-300">
+            <span className="inline-flex items-center rounded-full border border-blue-900 bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-slate-300">
               📈 Risultati reali · Ultimi 12 mesi
             </span>
             <h2 className="mt-6 font-serif text-3xl font-bold tracking-tight sm:text-4xl">
@@ -343,7 +343,7 @@ export default function Home() {
             {teamResults.map((member) => (
               <div
                 key={member.name}
-                className="overflow-hidden rounded-2xl border border-indigo-400/15 bg-[#0d1117] transition-colors hover:border-amber-500/30"
+                className="overflow-hidden rounded-2xl border border-blue-900 bg-[#020d1a] transition-colors hover:border-amber-500/30"
               >
                 <div className="aspect-[4/5] w-full overflow-hidden">
                   <Image
@@ -389,7 +389,7 @@ export default function Home() {
             {methodPoints.map((point) => (
               <div
                 key={point.title}
-                className="rounded-2xl border border-indigo-400/15 bg-[#0d1117] p-8 transition-colors hover:border-amber-500/30"
+                className="rounded-2xl border border-blue-900 bg-[#020d1a] p-8 transition-colors hover:border-amber-500/30"
               >
                 <div className="text-3xl" aria-hidden>
                   {point.icon}
@@ -409,7 +409,7 @@ export default function Home() {
       {/* CTA FINALE */}
       <section
         id="form"
-        className="scroll-mt-8 border-t border-white/5 bg-gradient-to-br from-amber-500/15 via-indigo-600/15 to-indigo-900/20"
+        className="scroll-mt-8 border-t border-white/5 bg-gradient-to-br from-amber-500/15 via-blue-600/15 to-blue-900/20"
       >
         <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-12 text-center md:py-16">
           <h2 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">

@@ -280,11 +280,11 @@ export default function Grazie() {
   const maxPct = duration ? (maxReached / duration) * 100 : 0;
 
   return (
-    <div className={`${inter.variable} ${dmSerif.variable} w-full bg-gradient-to-b from-[#0a0f1e] via-[#11132e] to-[#1a1040] font-sans text-slate-100`}>
+    <div className={`${inter.variable} ${dmSerif.variable} w-full bg-gradient-to-b from-[#020b18] via-[#051525] to-[#0a1f35] font-sans text-slate-100`}>
       <section className="relative overflow-hidden">
         <div
           aria-hidden
-          className="absolute left-1/2 top-0 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-indigo-600/20 blur-[130px]"
+          className="absolute left-1/2 top-0 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-blue-600/20 blur-[130px]"
         />
         <div
           aria-hidden
@@ -310,7 +310,7 @@ export default function Grazie() {
             /* Raccolta dati prima del video */
             <form
               onSubmit={handleLeadSubmit}
-              className="mx-auto mt-12 w-full max-w-md rounded-2xl border border-indigo-400/30 bg-[#0d1117] p-8 text-left"
+              className="mx-auto mt-12 w-full max-w-md rounded-2xl border border-blue-900 bg-[#020d1a] p-8 text-left"
             >
               <h2 className="text-center font-serif text-2xl font-bold tracking-tight text-white">
                 Prima di guardare il video, dimmi chi sei
@@ -407,11 +407,11 @@ export default function Grazie() {
                 setVideoCompleted(true);
                 setQuizOpen(true);
               }}
-              className="w-full cursor-pointer rounded-t-2xl border border-indigo-800 bg-black"
+              className="w-full cursor-pointer rounded-t-2xl border border-blue-900 bg-black"
             />
 
             {/* Controlli custom */}
-            <div className="flex items-center gap-4 rounded-b-2xl border border-t-0 border-indigo-800 bg-black px-4 py-3">
+            <div className="flex items-center gap-4 rounded-b-2xl border border-t-0 border-blue-900 bg-black px-4 py-3">
               <button
                 type="button"
                 onClick={togglePlay}
@@ -478,7 +478,7 @@ export default function Grazie() {
       {/* MODAL QUIZ */}
       {quizOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-6 backdrop-blur">
-          <div className="w-full max-w-lg rounded-2xl border border-indigo-400/40 bg-[#0d1117] p-8 shadow-2xl">
+          <div className="w-full max-w-lg rounded-2xl border border-blue-900 bg-[#020d1a] p-8 shadow-2xl">
             <Quiz videoCompleted={videoCompleted} lead={lead} />
           </div>
         </div>
