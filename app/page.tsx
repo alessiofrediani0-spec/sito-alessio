@@ -144,22 +144,22 @@ const teamResults = [
 
 const testimonials = [
   {
-    src: "/team/graziano.jpg",
-    name: "Graziano Valitutto",
-    role: "Team Leader",
-    text: "Quando Alessio me lo ha presentato ero scettico. Lavoro da anni e di proposte ne ho viste tante. Ma il fatto che si partisse dalle bollette — una spesa che avevo già — mi ha convinto a provare. Oggi ho generato oltre €17.000 e ho un sistema che lavora anche quando io non lavoro.",
+    src: "/team/rita.jpg",
+    name: "Rita Pignata",
+    role: "Watt 30",
+    text: "Non pensavo di riuscirci. Sono una persona concreta, diffido delle promesse facili. Ma Alessio mi ha spiegato tutto con chiarezza e non mi ha mai messa sotto pressione. Ho iniziato con le mie bollette e oggi ho già un piccolo gruppo che si muove con me. È un percorso serio, per persone serie.",
   },
   {
-    src: "/team/raffaella.jpg",
-    name: "Raffaella Trentacosti",
-    role: "Team Leader",
-    text: "Non avevo mai fatto nulla di simile prima. Alessio mi ha seguito passo dopo passo nei primi mesi senza lasciarmi mai sola. Ho iniziato con le mie bollette e piano piano ho costruito qualcosa di concreto. €8.900 generati finora — e le rendite mensili continuano ad arrivare.",
+    src: "/team/concetta.jpg",
+    name: "Concetta Di Palma",
+    role: "Group Leader",
+    text: "Ho quasi €6.000 generati e una rete che continua a crescere. La cosa che mi ha convinto fin dall'inizio è che non si tratta di vendere — si tratta di condividere qualcosa che usi già. Alessio ti segue davvero, non sparisce dopo che ti iscrivi.",
   },
   {
-    src: "/team/rosario.jpg",
-    name: "Rosario Di Domenico",
-    role: "Team Leader",
-    text: "La cosa che mi ha convinto è che non devi vendere nulla a sconosciuti. Parti da te stesso, dalle tue spese. Poi il sistema si replica. Ho quasi €6.000 generati e sto ancora crescendo. Se sei disposto a impegnarti davvero, funziona.",
+    src: "/team/angela.jpg",
+    name: "Angela Fortunato",
+    role: "Watt 60",
+    text: "Cercavo qualcosa che potessi fare nei ritagli di tempo, senza lasciare il mio lavoro. Questo sistema si adatta ai tuoi ritmi. Ho costruito tutto con calma, passo dopo passo, e oggi ho una rendita mensile che arriva in automatico. Non mi aspettavo risultati così concreti.",
   },
 ];
 
