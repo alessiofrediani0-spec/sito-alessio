@@ -165,12 +165,8 @@ export default function Home() {
           aria-hidden
           className="absolute left-1/2 top-0 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-indigo-600/20 blur-[130px]"
         />
-        <div
-          aria-hidden
-          className="absolute right-0 top-1/3 h-[26rem] w-[26rem] rounded-full bg-amber-500/10 blur-[120px]"
-        />
 
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center md:py-28">
+        <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 py-12 text-center md:py-16">
           {/* Badge */}
           <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-300">
             ⚡ Selezione collaboratori aperta
@@ -292,7 +288,7 @@ export default function Home() {
 
       {/* CHI SONO */}
       <section className="border-t border-white/5">
-        <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 py-20 md:grid-cols-2 md:py-28">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 py-12 md:grid-cols-2 md:py-16">
           <div className="relative w-full overflow-hidden rounded-2xl border border-amber-500/20 bg-white/5">
             <Image
               src="/team/alessio.png"
@@ -338,7 +334,7 @@ export default function Home() {
 
       {/* RISULTATI REALI DEL TEAM */}
       <section className="border-t border-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <div className="flex flex-col items-center text-center">
             <span className="inline-flex items-center rounded-full border border-indigo-400/20 bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-slate-300">
               📈 Risultati reali · Ultimi 12 mesi
@@ -357,13 +353,13 @@ export default function Home() {
                 key={member.name}
                 className="overflow-hidden rounded-2xl border border-indigo-400/15 bg-[#0d1117] transition-colors hover:border-amber-500/30"
               >
-                <div className="h-80 w-full overflow-hidden">
+                <div className="aspect-[4/5] w-full overflow-hidden">
                   <Image
                     src={member.src}
                     alt={member.alt}
                     width={400}
                     height={533}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-[50%_20%]"
                   />
                 </div>
                 <div className="p-6">
@@ -390,7 +386,7 @@ export default function Home() {
 
       {/* COME FUNZIONA */}
       <section className="border-t border-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
             Come <span className="italic text-amber-500">funziona</span>
           </h2>
@@ -406,10 +402,10 @@ export default function Home() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 font-serif text-xl font-bold text-neutral-950">
                   {step.n}
                 </div>
-                <h3 className="mt-6 text-lg font-semibold text-white">
+                <h3 className="mt-6 text-xl font-semibold text-white">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 text-base leading-relaxed text-slate-300">
                   {step.body}
                 </p>
               </div>
@@ -420,7 +416,7 @@ export default function Home() {
 
       {/* PER CHI È / NON È */}
       <section className="border-t border-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
             È adatto <span className="italic text-amber-500">a te?</span>
           </h2>
@@ -460,12 +456,15 @@ export default function Home() {
       </section>
 
       {/* CTA FINALE */}
-      <section id="form" className="scroll-mt-8 border-t border-white/5 bg-black/20">
-        <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-20 text-center md:py-28">
-          <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+      <section
+        id="form"
+        className="scroll-mt-8 border-t border-white/5 bg-gradient-to-br from-amber-500/15 via-indigo-600/15 to-indigo-900/20"
+      >
+        <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-12 text-center md:py-16">
+          <h2 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">
             Pronto a scoprire come funziona?
           </h2>
-          <p className="mt-4 text-slate-400">
+          <p className="mt-4 text-slate-300">
             Guarda il video di presentazione e scopri se fa per te.
           </p>
           <a
@@ -474,6 +473,9 @@ export default function Home() {
           >
             Inizia la selezione <span aria-hidden>→</span>
           </a>
+          <p className="mt-4 text-sm text-slate-400">
+            ⏱ Rispondo personalmente entro 24 ore
+          </p>
         </div>
       </section>
 
