@@ -19,6 +19,30 @@ export const metadata: Metadata = {
   title: "Alessio Frediani | 5-15 Global Energy Italia",
   description:
     "Scopri come costruire una rendita ricorrente partendo da zero, con un metodo serio e un affiancamento personale. Guarda il video e scopri se fa per te.",
+  openGraph: {
+    title: "Alessio Frediani | 5-15 Global Energy Italia",
+    description:
+      "Scopri come costruire una rendita ricorrente partendo da zero, con un metodo serio e un affiancamento personale.",
+    url: "https://sito-alessio-bice.vercel.app",
+    siteName: "Alessio Frediani",
+    images: [
+      {
+        url: "https://sito-alessio-bice.vercel.app/team/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alessio Frediani - 5-15 Global Energy Italia",
+      },
+    ],
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alessio Frediani | 5-15 Global Energy Italia",
+    description:
+      "Scopri come costruire una rendita ricorrente partendo da zero.",
+    images: ["https://sito-alessio-bice.vercel.app/team/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
