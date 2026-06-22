@@ -142,6 +142,27 @@ const teamResults = [
   },
 ];
 
+const testimonials = [
+  {
+    src: "/team/graziano.jpg",
+    name: "Graziano Valitutto",
+    role: "Team Leader",
+    text: "Quando Alessio me lo ha presentato ero scettico. Lavoro da anni e di proposte ne ho viste tante. Ma il fatto che si partisse dalle bollette — una spesa che avevo già — mi ha convinto a provare. Oggi ho generato oltre €17.000 e ho un sistema che lavora anche quando io non lavoro.",
+  },
+  {
+    src: "/team/raffaella.jpg",
+    name: "Raffaella Trentacosti",
+    role: "Team Leader",
+    text: "Non avevo mai fatto nulla di simile prima. Alessio mi ha seguito passo dopo passo nei primi mesi senza lasciarmi mai sola. Ho iniziato con le mie bollette e piano piano ho costruito qualcosa di concreto. €8.900 generati finora — e le rendite mensili continuano ad arrivare.",
+  },
+  {
+    src: "/team/rosario.jpg",
+    name: "Rosario Di Domenico",
+    role: "Team Leader",
+    text: "La cosa che mi ha convinto è che non devi vendere nulla a sconosciuti. Parti da te stesso, dalle tue spese. Poi il sistema si replica. Ho quasi €6.000 generati e sto ancora crescendo. Se sei disposto a impegnarti davvero, funziona.",
+  },
+];
+
 /* ---------------- Pagina ---------------- */
 
 export default function Home() {
@@ -373,6 +394,56 @@ export default function Home() {
             I risultati indicati sono individuali e dipendono da impegno, costanza
             e tempo dedicato. Non costituiscono garanzia di guadagno.
           </p>
+        </div>
+      </section>
+
+      {/* TESTIMONIANZE */}
+      <section className="border-t border-white/5">
+        <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
+          <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+            Cosa dicono i miei collaboratori
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
+            Persone reali, risultati ottenuti con impegno e costanza.
+          </p>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="relative rounded-xl border border-blue-800 bg-[#020d1a] p-6"
+              >
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute left-4 top-2 font-serif text-6xl leading-none text-amber-500/20"
+                >
+                  &ldquo;
+                </span>
+                <div className="relative flex items-center gap-4">
+                  <Image
+                    src={t.src}
+                    alt={t.name}
+                    width={64}
+                    height={64}
+                    className="h-16 w-16 rounded-full object-cover object-top"
+                  />
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-white">
+                      {t.name}
+                    </h3>
+                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-amber-400">
+                      {t.role}
+                    </p>
+                    <p className="mt-1 text-amber-400" aria-hidden>
+                      ★★★★★
+                    </p>
+                  </div>
+                </div>
+                <p className="relative mt-5 text-sm italic leading-relaxed text-white/90">
+                  {t.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -17,7 +17,8 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"palette blu navy invece di indigo viola\"; git push })",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx eslint app --ext .ts,.tsx; if \\($?\\) { \"ESLINT OK\" })",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { git add .; git commit -m \"privacy policy, cookie banner, FAQ, CTA variati\"; git push })",
-      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { npx eslint app --ext .ts,.tsx }; if \\($?\\) { git add .; git commit -m \"sposta FAQ da landing a pagina grazie\"; git push })"
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { npx eslint app --ext .ts,.tsx }; if \\($?\\) { git add .; git commit -m \"sposta FAQ da landing a pagina grazie\"; git push })",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); npx tsc --noEmit; if \\($?\\) { npx eslint app --ext .ts,.tsx }; if \\($?\\) { git add .; git commit -m \"aggiungi sezione testimonianze\"; git push })"
     ]
   }
 }
