@@ -16,9 +16,9 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Trasforma le tue bollette in una rendita | Alessio Frediani",
+  title: "Alessio Frediani | 5-15 Global Energy Italia",
   description:
-    "Scopri come trasformare una spesa che hai già — luce e gas — in un'opportunità concreta di reddito ricorrente.",
+    "Scopri come costruire una rendita ricorrente partendo da zero, con un metodo serio e un affiancamento personale. Guarda il video e scopri se fa per te.",
 };
 
 export default function RootLayout({
