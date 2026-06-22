@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
+import CookieBanner from "./CookieBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="it" className="antialiased">
       <body className={`${inter.variable} ${dmSerif.variable}`}>
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

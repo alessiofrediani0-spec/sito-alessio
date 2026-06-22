@@ -118,6 +118,29 @@ const methodPoints = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Costa qualcosa per iniziare?",
+    a: "No. Per iniziare non c'è nessun costo. Si parte dalle proprie bollette di luce e gas — una spesa che hai già ogni mese. Zero investimento iniziale.",
+  },
+  {
+    q: "Devo vendere a sconosciuti?",
+    a: "No. Non si parte vendendo a estranei. Si parte dalle proprie utenze e da persone che già conosci. Il modello è basato sulla condivisione, non sulla vendita porta a porta.",
+  },
+  {
+    q: "È una catena di Sant'Antonio o una piramide?",
+    a: "No. 5-15 Global Energy è la rete commerciale di Italia Gas e Luce, un fornitore di energia regolamentato da ARERA. Il guadagno deriva da utenze energetiche reali, non dal reclutamento di persone.",
+  },
+  {
+    q: "Quanto tempo ci vuole per vedere i primi risultati?",
+    a: "I primi guadagni immediati arrivano entro 7-10 giorni dalla prima utenza approvata. Le rendite mensili iniziano dopo 25-45 giorni, quando l'utenza entra in fornitura. I risultati dipendono dall'impegno di ciascuno.",
+  },
+  {
+    q: "Cosa succede se decido di smettere?",
+    a: "Puoi smettere quando vuoi. Le rendite sulle utenze già attive continuano finché i clienti restano con IGL. Non ci sono penali o costi di uscita.",
+  },
+];
+
 const teamResults = [
   {
     src: "/team/graziano.jpg",
@@ -141,6 +164,56 @@ const teamResults = [
     earnings: "€5.999 generati",
   },
 ];
+
+/* ---------------- FAQ ---------------- */
+
+function Faq() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <div className="mt-12 space-y-4">
+      {faqs.map((item, index) => {
+        const isOpen = open === index;
+        return (
+          <div
+            key={item.q}
+            className="overflow-hidden rounded-2xl border border-blue-900 bg-[#020d1a]"
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : index)}
+              aria-expanded={isOpen}
+              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+            >
+              <span className="text-base font-semibold text-white sm:text-lg">
+                {item.q}
+              </span>
+              <span
+                aria-hidden
+                className={`shrink-0 text-amber-400 transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              >
+                ▼
+              </span>
+            </button>
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <p className="px-6 pb-5 text-base leading-relaxed text-slate-300">
+                  {item.a}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 /* ---------------- Pagina ---------------- */
 
@@ -270,7 +343,7 @@ export default function Home() {
               href="#form"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-amber-500/70 bg-black/30 px-8 py-3.5 text-base font-semibold text-amber-300 backdrop-blur transition-colors hover:border-amber-400 hover:bg-amber-500 hover:text-neutral-950"
             >
-              Inizia la selezione <span aria-hidden>→</span>
+              Guarda il video riservato <span aria-hidden>→</span>
             </a>
           </div>
         </div>
@@ -406,6 +479,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="border-t border-white/5">
+        <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+          <h2 className="text-center font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+            Domande frequenti
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
+            Le risposte alle domande che tutti si fanno.
+          </p>
+          <Faq />
+        </div>
+      </section>
+
       {/* CTA FINALE */}
       <section
         id="form"
@@ -422,7 +508,7 @@ export default function Home() {
             href="/grazie"
             className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-10 py-4 text-base font-semibold text-neutral-950 shadow-lg shadow-amber-500/20 transition-colors hover:bg-amber-400"
           >
-            Inizia la selezione <span aria-hidden>→</span>
+            Inizia adesso — è gratuito <span aria-hidden>→</span>
           </a>
           <p className="mt-4 text-sm text-slate-400">
             ⏱ Rispondo personalmente entro 24 ore
@@ -432,8 +518,13 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-5xl px-6 py-8 text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} Alessio Frediani · Global Energy Italia
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-2 px-6 py-8 text-center text-sm text-slate-500">
+          <span>
+            © {new Date().getFullYear()} Alessio Frediani · Global Energy Italia
+          </span>
+          <a href="/privacy" className="text-slate-400 transition-colors hover:text-amber-400">
+            Privacy Policy
+          </a>
         </div>
       </footer>
     </div>
