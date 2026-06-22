@@ -485,7 +485,7 @@ export default function Home() {
             <input
               type="hidden"
               name="_next"
-              value="http://localhost:3000/grazie"
+              value="https://sito-alessio-bice.vercel.app/grazie"
             />
             <input
               type="text"

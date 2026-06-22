@@ -5,7 +5,8 @@
       "PowerShell(npx tsc --noEmit; if \\($?\\) { \"TSC OK\" })",
       "PowerShell(New-Item *)",
       "PowerShell(Get-Command *)",
-      "PowerShell(git *)"
+      "PowerShell(git *)",
+      "PowerShell(git push *)"
     ]
   }
 }
