@@ -116,22 +116,31 @@ function Quiz() {
 
 /* ---------------- Pagina di ringraziamento ---------------- */
 
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "00:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
 export default function Grazie() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
   const maxReachedRef = useRef(0);
-  const [quizOpen, setQuizOpen] = useState(false);
+  const draggingRef = useRef(false);
 
-  // Impedisce di saltare avanti nel video: si può tornare indietro,
-  // ma non superare il punto massimo già visto.
+  const [quizOpen, setQuizOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [maxReached, setMaxReached] = useState(0);
+
+  // Impedisce di saltare avanti nel video anche tramite i controlli nativi
+  // o la tastiera: si può tornare indietro, ma non superare il punto massimo
+  // già visto. (Doppia protezione, oltre ai controlli custom.)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime > maxReachedRef.current) {
-        maxReachedRef.current = video.currentTime;
-      }
-    };
 
     const handleSeeking = () => {
       if (video.currentTime > maxReachedRef.current + 0.5) {
@@ -139,13 +148,62 @@ export default function Grazie() {
       }
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
     video.addEventListener("seeking", handleSeeking);
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
       video.removeEventListener("seeking", handleSeeking);
     };
   }, []);
+
+  function togglePlay() {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      void video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  function handleTimeUpdate() {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.currentTime > maxReachedRef.current) {
+      maxReachedRef.current = video.currentTime;
+      setMaxReached(video.currentTime);
+    }
+    setCurrentTime(video.currentTime);
+  }
+
+  // Calcola il tempo dalla posizione del puntatore, limitato a maxReached.
+  function seekFromPointer(clientX: number) {
+    const video = videoRef.current;
+    const bar = barRef.current;
+    if (!video || !bar || !duration) return;
+    const rect = bar.getBoundingClientRect();
+    const fraction = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+    const target = Math.min(fraction * duration, maxReachedRef.current);
+    video.currentTime = target;
+    setCurrentTime(target);
+  }
+
+  function handleBarPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    draggingRef.current = true;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    seekFromPointer(e.clientX);
+  }
+
+  function handleBarPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!draggingRef.current) return;
+    seekFromPointer(e.clientX);
+  }
+
+  function handleBarPointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    draggingRef.current = false;
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  }
+
+  const progressPct = duration ? (currentTime / duration) * 100 : 0;
+  const maxPct = duration ? (maxReached / duration) * 100 : 0;
 
   return (
     <div className="w-full bg-gradient-to-b from-[#0a0f1e] via-[#11132e] to-[#1a1040] font-sans text-slate-100">
@@ -174,17 +232,66 @@ export default function Grazie() {
             cosa succede dopo.
           </p>
 
-          {/* Video */}
-          <video
-            ref={videoRef}
-            src="/video/presentazione.mp4"
-            controls
-            playsInline
-            controlsList="nodownload"
-            onContextMenu={(e) => e.preventDefault()}
-            onEnded={() => setQuizOpen(true)}
-            className="mx-auto mt-12 w-full max-w-3xl rounded-2xl border border-indigo-800"
-          />
+          {/* Video con controlli custom */}
+          <div className="mx-auto mt-12 w-full max-w-3xl">
+            <video
+              ref={videoRef}
+              src="/video/presentazione.mp4"
+              playsInline
+              controlsList="nodownload"
+              onContextMenu={(e) => e.preventDefault()}
+              onClick={togglePlay}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onTimeUpdate={handleTimeUpdate}
+              onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+              onEnded={() => {
+                setIsPlaying(false);
+                setQuizOpen(true);
+              }}
+              className="w-full cursor-pointer rounded-t-2xl border border-indigo-800 bg-black"
+            />
+
+            {/* Controlli custom */}
+            <div className="flex items-center gap-4 rounded-b-2xl border border-t-0 border-indigo-800 bg-black px-4 py-3">
+              <button
+                type="button"
+                onClick={togglePlay}
+                aria-label={isPlaying ? "Pausa" : "Play"}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-500 text-sm text-neutral-950 transition-colors hover:bg-amber-400"
+              >
+                {isPlaying ? "⏸" : "▶"}
+              </button>
+
+              {/* Barra di progresso: clic/trascina solo fino a maxReached */}
+              <div
+                ref={barRef}
+                onPointerDown={handleBarPointerDown}
+                onPointerMove={handleBarPointerMove}
+                onPointerUp={handleBarPointerUp}
+                className="group relative h-2 flex-1 cursor-pointer touch-none rounded-full bg-slate-700"
+              >
+                {/* Limite massimo sbloccato */}
+                <div
+                  className="absolute inset-y-0 left-0 rounded-full bg-slate-600"
+                  style={{ width: `${maxPct}%` }}
+                />
+                {/* Progresso corrente */}
+                <div
+                  className="absolute inset-y-0 left-0 rounded-full bg-amber-500"
+                  style={{ width: `${progressPct}%` }}
+                />
+                <div
+                  className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400 opacity-0 transition-opacity group-hover:opacity-100"
+                  style={{ left: `${progressPct}%` }}
+                />
+              </div>
+
+              <span className="shrink-0 font-mono text-xs tabular-nums text-slate-300">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+            </div>
+          </div>
 
           {/* Card prossimo passo */}
           <div className="mt-12 w-full max-w-2xl rounded-2xl border border-amber-500/40 bg-black/30 p-8 text-left backdrop-blur">
