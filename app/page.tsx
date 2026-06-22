@@ -94,10 +94,10 @@ function Countdown() {
 /* ---------------- Dati ---------------- */
 
 const avatars = [
-  { initials: "MR", bg: "bg-amber-500" },
-  { initials: "GL", bg: "bg-blue-500" },
-  { initials: "SF", bg: "bg-emerald-500" },
-  { initials: "AC", bg: "bg-purple-500" },
+  { src: "/team/alessio.png", alt: "Alessio" },
+  { src: "/team/graziano.jpg", alt: "Graziano" },
+  { src: "/team/raffaella.jpg", alt: "Raffaella" },
+  { src: "/team/rosario.jpg", alt: "Rosario" },
 ];
 
 const steps = [
@@ -229,16 +229,18 @@ export default function Home() {
           {/* Social proof */}
           <div className="mt-12 flex flex-col items-center gap-4">
             <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
+              <div className="flex">
                 {avatars.map((a) => (
-                  <div
-                    key={a.initials}
-                    className={`flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#11132e] text-sm font-bold text-white ${a.bg}`}
-                  >
-                    {a.initials}
-                  </div>
+                  <Image
+                    key={a.src}
+                    src={a.src}
+                    alt={a.alt}
+                    width={40}
+                    height={40}
+                    className="-ml-3 h-10 w-10 rounded-full border-2 border-indigo-900 object-cover object-top first:ml-0"
+                  />
                 ))}
-                <div className="flex h-11 items-center justify-center rounded-full border-2 border-[#11132e] bg-slate-700 px-3 text-sm font-bold text-white">
+                <div className="-ml-3 flex h-10 items-center justify-center rounded-full border-2 border-indigo-900 bg-slate-700 px-3 text-sm font-bold text-white">
                   +970
                 </div>
               </div>
