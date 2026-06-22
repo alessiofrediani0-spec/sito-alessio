@@ -5,49 +5,91 @@ import { useEffect, useRef, useState } from "react";
 /* ---------------- Quiz ---------------- */
 
 type Option = { label: string; correct: boolean };
+type Question = { prompt: string; options: Option[]; wrong: string };
 
-const question1: { prompt: string; options: Option[]; wrong: string } = {
-  prompt: "Cosa serve per iniziare?",
-  options: [
-    { label: "Un investimento iniziale", correct: false },
-    { label: "2 bollette: luce e gas", correct: true },
-    { label: "Esperienza nel settore", correct: false },
-  ],
-  wrong: "Non è corretto. Guarda di nuovo il video con attenzione.",
-};
-
-const question2: { prompt: string; options: Option[]; wrong: string } = {
-  prompt: "Quanto tempo serve per vedere i primi risultati?",
-  options: [
-    { label: "Pochi giorni, è guadagno immediato", correct: false },
-    { label: "Serve impegno e costanza nel tempo", correct: true },
-    { label: "Niente, i risultati arrivano da soli", correct: false },
-  ],
-  wrong: "Non è corretto. Questo non è uno schema di guadagno facile.",
-};
+const questions: Question[] = [
+  {
+    prompt: "Cosa serve per iniziare?",
+    options: [
+      { label: "Un investimento iniziale", correct: false },
+      { label: "2 bollette: luce e gas", correct: true },
+      { label: "Esperienza nel settore", correct: false },
+    ],
+    wrong: "Non è corretto. Guarda di nuovo il video con attenzione.",
+  },
+  {
+    prompt: "Hai le 2 bollette di luce e gas?",
+    options: [
+      { label: "Sì, le ho e sono intestate a me", correct: true },
+      { label: "Le ho ma non sono intestate a me", correct: true },
+      { label: "Non le ho ma posso chiederle ai miei conoscenti", correct: true },
+    ],
+    wrong: "",
+  },
+  {
+    prompt: "Quanto tempo serve per vedere i primi risultati?",
+    options: [
+      { label: "Pochi giorni, è guadagno immediato", correct: false },
+      { label: "Serve impegno e costanza nel tempo", correct: true },
+      { label: "Niente, i risultati arrivano da soli", correct: false },
+    ],
+    wrong: "Non è corretto. Questo non è uno schema di guadagno facile.",
+  },
+];
 
 const WHATSAPP_URL =
   "https://wa.me/393517093649?text=Ciao%20Alessio%2C%20ho%20guardato%20il%20video%20e%20voglio%20saperne%20di%20pi%C3%B9";
 
-function Quiz() {
-  const [step, setStep] = useState<1 | 2 | "final">(1);
+function Quiz({ videoCompleted }: { videoCompleted: boolean }) {
+  const [step, setStep] = useState<number | "final">(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [answers, setAnswers] = useState<string[]>([]);
 
-  const current = step === 1 ? question1 : question2;
+  const current = step === "final" ? null : questions[step];
 
-  function handleAnswer(index: number, option: Option) {
-    setSelected(index);
-    if (option.correct) {
-      setError(null);
-      setSelected(null);
-      setStep(step === 1 ? 2 : "final");
-    } else {
-      setError(current.wrong);
+  async function submitLead(finalAnswers: string[]) {
+    try {
+      await fetch("https://formsubmit.co/alessio515globalenergy@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _subject: "Quiz completato - nuovo lead qualificato",
+          video_completato: videoCompleted ? "Sì" : "No",
+          domanda_1: finalAnswers[0],
+          domanda_2: finalAnswers[1],
+          domanda_3: finalAnswers[2],
+        }),
+      });
+    } catch {
+      // L'invio è best-effort: non blocchiamo l'accesso allo step finale.
     }
   }
 
-  if (step === "final") {
+  function handleAnswer(index: number, option: Option) {
+    if (step === "final") return;
+    setSelected(index);
+
+    if (!option.correct) {
+      setError(questions[step].wrong);
+      return;
+    }
+
+    const newAnswers = [...answers];
+    newAnswers[step] = option.label;
+    setAnswers(newAnswers);
+    setError(null);
+    setSelected(null);
+
+    if (step < questions.length - 1) {
+      setStep(step + 1);
+    } else {
+      void submitLead(newAnswers);
+      setStep("final");
+    }
+  }
+
+  if (step === "final" || !current) {
     return (
       <div className="text-center">
         <h2 className="font-serif text-3xl font-bold tracking-tight text-emerald-400">
@@ -79,7 +121,7 @@ function Quiz() {
   return (
     <div>
       <span className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
-        Domanda {step} di 2
+        Domanda {step + 1} di {questions.length}
       </span>
       <h2 className="mt-4 font-serif text-2xl font-bold tracking-tight text-white">
         {current.prompt}
@@ -130,6 +172,7 @@ export default function Grazie() {
   const draggingRef = useRef(false);
 
   const [quizOpen, setQuizOpen] = useState(false);
+  const [videoCompleted, setVideoCompleted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -247,6 +290,7 @@ export default function Grazie() {
               onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
               onEnded={() => {
                 setIsPlaying(false);
+                setVideoCompleted(true);
                 setQuizOpen(true);
               }}
               className="w-full cursor-pointer rounded-t-2xl border border-indigo-800 bg-black"
@@ -320,7 +364,7 @@ export default function Grazie() {
       {quizOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-6 backdrop-blur">
           <div className="w-full max-w-lg rounded-2xl border border-indigo-400/40 bg-[#0d1117] p-8 shadow-2xl">
-            <Quiz />
+            <Quiz videoCompleted={videoCompleted} />
           </div>
         </div>
       )}
