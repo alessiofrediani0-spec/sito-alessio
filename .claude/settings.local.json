@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm run *)",
+      "PowerShell(npx tsc --noEmit; if \\($?\\) { \"TSC OK\" })",
+      "PowerShell(New-Item *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(git *)"
+    ]
+  }
+}
