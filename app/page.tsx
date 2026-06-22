@@ -123,8 +123,8 @@ const teamResults = [
     src: "/team/graziano.jpg",
     alt: "Graziano Valitutto",
     name: "Graziano Valitutto",
-    role: "Team Leader",
-    earnings: "€17.603 generati",
+    role: "Group Leader",
+    earnings: "€17.635 generati",
   },
   {
     src: "/team/raffaella.jpg",
@@ -138,7 +138,7 @@ const teamResults = [
     alt: "Rosario Di Domenico",
     name: "Rosario Di Domenico",
     role: "Team Leader",
-    earnings: "€5.999 generati",
+    earnings: "€6.223 generati",
   },
 ];
 
@@ -313,7 +313,7 @@ export default function Home() {
                 Group Leader
               </span>
               <span className="mt-1 block font-bold text-white">
-                €22.000+ di rendita negli ultimi 12 mesi
+                €23.155+ di rendita negli ultimi 12 mesi
               </span>
             </div>
           </div>
@@ -329,13 +329,13 @@ export default function Home() {
               imprenditoriale ancora durante gli studi — prima con un&apos;attività
               e-commerce su Amazon, poi come Social Media Manager. Dal 2023 ho
               scelto il settore energetico: oggi gestisco una rete di oltre 970
-              persone e ho generato più di €22.000 di rendita ricorrente. Non cerco
+              persone e ho generato più di €23.155 di rendita ricorrente. Non cerco
               tutti — cerco persone serie, disposte a costruire qualcosa di
               concreto.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300">
-                €22.000+ di rendita generati
+                €23.155+ di rendita generati
               </span>
               <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300">
                 970+ persone nella rete
