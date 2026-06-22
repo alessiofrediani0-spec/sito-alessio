@@ -304,27 +304,29 @@ export default function Home() {
                 Group Leader
               </span>
               <span className="mt-1 block font-bold text-white">
-                €22.000+ negli ultimi 12 mesi
+                €22.000+ di rendita negli ultimi 12 mesi
               </span>
             </div>
           </div>
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
-              Group Leader · 5-15 Global Energy Italia
+              26 anni · Group Leader · 5-15 Global Energy Italia
             </span>
             <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight sm:text-5xl">
               Chi sono
             </h2>
             <p className="mt-6 max-w-xl text-pretty leading-relaxed text-slate-300">
-              Sono Alessio Frediani. Ho costruito una rete di oltre 970 persone
-              partendo da zero, senza esperienza nel settore energia. Ho già
-              generato più di €22.000 di commissioni. Non vendo nulla — seleziono
-              le persone giuste e le accompagno passo dopo passo con un metodo che
-              funziona davvero.
+              Ho 26 anni, vengo da Viareggio e ho iniziato il mio percorso
+              imprenditoriale ancora durante gli studi — prima con un&apos;attività
+              e-commerce su Amazon, poi come Social Media Manager. Dal 2023 ho
+              scelto il settore energetico: oggi gestisco una rete di oltre 970
+              persone e ho generato più di €22.000 di rendita ricorrente. Non cerco
+              tutti — cerco persone serie, disposte a costruire qualcosa di
+              concreto.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300">
-                €22.000+ generati
+                €22.000+ di rendita generati
               </span>
               <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300">
                 970+ persone nella rete
