@@ -289,12 +289,12 @@ export default function Home() {
       {/* CHI SONO */}
       <section className="border-t border-white/5">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 py-12 md:grid-cols-2 md:py-16">
-          <div className="relative w-full overflow-hidden rounded-2xl border border-amber-500/20 bg-white/5">
+          <div className="relative min-h-[400px] w-full overflow-hidden rounded-2xl border border-amber-500/20 bg-white/5">
             <Image
               src="/team/alessio.png"
               alt="Alessio Frediani"
-              width={420}
-              height={560}
+              width={500}
+              height={600}
               className="h-full w-full rounded-2xl object-cover object-top"
             />
             <div className="absolute inset-x-0 bottom-0 bg-black/80 px-5 py-4">
@@ -359,7 +359,7 @@ export default function Home() {
                     alt={member.alt}
                     width={400}
                     height={533}
-                    className="h-full w-full object-cover object-[50%_20%]"
+                    className="h-full w-full object-cover object-[50%_10%]"
                   />
                 </div>
                 <div className="p-6">
